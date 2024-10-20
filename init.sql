@@ -1,0 +1,93 @@
+-- Пример создания таблиц и добавления тестовых данных
+
+-- Создание таблицы продуктов
+CREATE TABLE IF NOT EXISTS product (
+                                       id BIGSERIAL PRIMARY KEY,
+                                       name VARCHAR(255) NOT NULL,
+                                       description TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS sku (
+                                   id BIGSERIAL PRIMARY KEY,
+                                   sku_code VARCHAR(50) NOT NULL UNIQUE,
+                                   price NUMERIC NOT NULL,
+                                   stock_quantity INTEGER NOT NULL,
+                                   available_from DATE NOT NULL,
+                                   product_id BIGINT REFERENCES product(id)
+);
+
+
+INSERT INTO product (name, description) VALUES
+                                            ('Wireless Bluetooth Headphones', 'High-quality over-ear headphones with noise-cancellation and long battery life.'),
+                                            ('Smart Fitness Watch', 'Track your health and fitness with this stylish smartwatch featuring heart rate monitoring and GPS.'),
+                                            ('4K Ultra HD Smart TV', 'Enjoy stunning picture quality and smart features in this 55-inch 4K TV.'),
+                                            ('Portable Power Bank', 'Compact and lightweight power bank with fast charging for your devices.'),
+                                            ('Gaming Laptop', 'High-performance laptop designed for gaming with a powerful GPU and cooling system.'),
+                                            ('Coffee Maker', 'Brew your favorite coffee with this programmable coffee maker with a built-in grinder.'),
+                                            ('Electric Toothbrush', 'Smart electric toothbrush with multiple cleaning modes and a pressure sensor.'),
+                                            ('Air Fryer', 'Cook your favorite meals with less oil in this versatile air fryer with preset cooking options.'),
+                                            ('Robot Vacuum Cleaner', 'Automated vacuum cleaner that navigates your home and cleans floors effortlessly.'),
+                                            ('Wireless Charger', 'Fast wireless charging pad compatible with all Qi-enabled devices.'),
+                                            ('HDMI Cable', 'High-speed HDMI cable for connecting your devices with 4K support.'),
+                                            ('Laptop Stand', 'Ergonomic laptop stand to improve your posture and reduce neck strain.'),
+                                            ('Bluetooth Speaker', 'Portable Bluetooth speaker with rich sound and waterproof design.'),
+                                            ('Smart Thermostat', 'Control your home temperature remotely with this smart thermostat.'),
+                                            ('Noise Cancelling Earbuds', 'In-ear wireless earbuds with active noise cancellation for a better listening experience.'),
+                                            ('External Hard Drive', '1TB external hard drive for extra storage and backup.'),
+                                            ('Instant Pot', 'Multi-functional pressure cooker for fast and easy meal preparation.'),
+                                            ('Travel Backpack', 'Spacious and durable backpack designed for travelers with multiple compartments.'),
+                                            ('Gaming Mouse', 'High-precision gaming mouse with customizable buttons and RGB lighting.'),
+                                            ('Wireless Keyboard', 'Sleek wireless keyboard with a rechargeable battery and quiet keys.'),
+                                            ('Action Camera', 'Compact and waterproof action camera for capturing your adventures.');
+
+INSERT INTO sku (sku_code, price, stock_quantity, available_from, product_id) VALUES
+                                                                                  ('SKU1', 79.99, 50, '1999-01-01', 1),
+                                                                                  ('SKU2', 199.99, 30, '2024-01-01', 2),
+                                                                                  ('SKU3', 599.99, 20, '2024-02-03', 3),
+                                                                                  ('SKU4', 29.99, 100, '2011-01-01', 4),
+                                                                                  ('SKU5', 1499.99, 15, '2024-01-01', 5),
+                                                                                  ('SKU6', 89.99, 40, '2022-01-01', 6),
+                                                                                  ('SKU7', 49.99, 60, '2021-01-01', 7),
+                                                                                  ('SKU8', 89.99, 25, '2025-01-01', 8),
+                                                                                  ('SKU9', 299.99, 10, '1994-01-01', 9),
+                                                                                  ('SKU10', 24.99, 80, '2012-01-01', 10),
+                                                                                  ('SKU11', 15.99, 70, '2013-01-01', 11),
+                                                                                  ('SKU12', 19.99, 50, '2014-01-01', 12),
+                                                                                  ('SKU13', 39.99, 65, '1987-01-01', 13),
+                                                                                  ('SKU14', 75.00, 30, '1999-01-01', 14),
+                                                                                  ('SKU15', 45.00, 40, '2014-01-01', 15),
+                                                                                  ('SKU16', 35.00, 50, '2015-01-01', 16),
+                                                                                  ('SKU17', 89.00, 20, '2016-01-01', 17),
+                                                                                  ('SKU18', 149.00, 15, '2014-01-01', 18),
+                                                                                  ('SKU19', 199.00, 35, '2017-01-01', 19),
+                                                                                  ('SKU20', 299.00, 10, '2021-01-01', 20),
+                                                                                  ('SKU21', 79.99, 45, '2022-01-01', 1),
+                                                                                  ('SKU22', 199.99, 25, '2023-01-01', 2),
+                                                                                  ('SKU23', 599.99, 20, '2024-01-01', 3),
+                                                                                  ('SKU24', 29.99, 100, '2021-01-01', 4),
+                                                                                  ('SKU25', 1499.99, 15, '2022-01-01', 5),
+                                                                                  ('SKU26', 89.99, 40, '2023-01-01', 6),
+                                                                                  ('SKU27', 49.99, 60, '2021-01-01', 7),
+                                                                                  ('SKU28', 89.99, 25, '2023-01-01', 8),
+                                                                                  ('SKU29', 299.99, 10, '2021-01-01', 9),
+                                                                                  ('SKU30', 24.99, 80, '2015-01-01', 10),
+                                                                                  ('SKU31', 15.99, 70, '2021-01-01', 11),
+                                                                                  ('SKU32', 19.99, 50, '2016-01-01', 12),
+                                                                                  ('SKU33', 39.99, 65, '2021-01-01', 13),
+                                                                                  ('SKU34', 75.00, 30, '2014-01-01', 14),
+                                                                                  ('SKU35', 45.00, 40, '2009-01-01', 15),
+                                                                                  ('SKU36', 35.00, 50, '2007-01-01', 16),
+                                                                                  ('SKU37', 89.00, 20, '2007-01-01', 17),
+                                                                                  ('SKU38', 149.00, 15, '2008-01-01', 18),
+                                                                                  ('SKU39', 199.00, 35, '2001-01-01', 19),
+                                                                                  ('SKU40', 299.00, 10, '2002-01-01', 20),
+                                                                                  ('SKU41', 79.99, 50, '2003-01-01', 1),
+                                                                                  ('SKU42', 199.99, 30, '2004-01-01', 2),
+                                                                                  ('SKU43', 599.99, 20, '2014-01-01', 3),
+                                                                                  ('SKU44', 29.99, 100, '2004-01-01', 4),
+                                                                                  ('SKU45', 1499.99, 15, '2021-01-01', 5),
+                                                                                  ('SKU46', 89.99, 40, '2025-01-01', 6),
+                                                                                  ('SKU47', 49.99, 60, '2021-01-01', 7),
+                                                                                  ('SKU48', 89.99, 25, '2024-01-01', 8),
+                                                                                  ('SKU49', 299.99, 10, '2023-01-01', 9),
+                                                                                  ('SKU50', 24.99, 80, '2015-01-01', 10);

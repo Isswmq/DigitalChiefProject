@@ -1,0 +1,33 @@
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST}:5432/${POSTGRES_DB}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 10
+  elasticsearch:
+    uris: ${ELASTICSEARCH_URIS}
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        hbm2ddl:
+          auto: validate
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    root: INFO
+  file:
+    name: elastic.log
+    path: /
+
+filter:
+  enabled: false
+  availableFrom: 2020-02-02
+  stockQuantity: 50
